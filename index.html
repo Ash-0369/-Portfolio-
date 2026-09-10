@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Rivera | First-Year B.Tech CSE Portfolio</title>
+  <meta name="description" content="Personal portfolio of Alex Rivera, a First-Year B.Tech Computer Science student specializing in Data Structures, Algorithms, and Full-Stack Engineering. Open for Summer Internships." />
+  <meta name="keywords" content="B.Tech, Computer Science, Student Portfolio, Software Engineer Intern, Data Structures, Algorithms, Web Development, Vercel" />
+  <meta name="author" content="Alex Rivera" />
+
+  <!-- Open Graph Meta Tags for LinkedIn / Twitter Sharing -->
+  <meta property="og:title" content="Alex Rivera | First-Year B.Tech CSE Student Portfolio" />
+  <meta property="og:description" content="Explore my projects, algorithmic problem-solving journey, education highlights, and technical skills. Ready for engineering internships." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/favicon.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen relative antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- Ambient Decorative Background Glows -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-glow ambient-glow-3"></div>
+
+  <!-- ========================================================================
+       Sticky Navbar with Glassmorphism
+       ======================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Logo / Monogram -->
+      <a href="#home" class="flex items-center gap-2 group focus:outline-none">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-mono font-bold shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
+          &lt;/&gt;
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-blue-500 transition">
+            Alex Rivera
+          </span>
+          <span class="text-[10px] font-mono text-blue-600 dark:text-blue-400 -mt-1">
+            B.Tech CSE '28
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+        <a href="#home" class="nav-link hover:text-blue-500 transition">Home</a>
+        <a href="#about" class="nav-link hover:text-blue-500 transition">About</a>
+        <a href="#projects" class="nav-link hover:text-blue-500 transition">Projects</a>
+        <a href="#skills" class="nav-link hover:text-blue-500 transition">Skills</a>
+        <a href="#contact" class="nav-link hover:text-blue-500 transition">Contact</a>
+      </nav>
+
+      <!-- Right Action Items (Resume CTA & Theme Toggle) -->
+      <div class="flex items-center gap-3">
+        <!-- Resume Trigger Button -->
+        <button type="button" class="resume-open-trigger hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-500/30 transition">
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+          <span>Resume</span>
+        </button>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button type="button" class="theme-toggle-btn p-2 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 focus:outline-none transition" aria-label="Toggle Color Theme">
+          <i data-lucide="sun" class="w-4 h-4 theme-icon-sun"></i>
+          <i data-lucide="moon" class="w-4 h-4 theme-icon-moon hidden"></i>
+        </button>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button type="button" id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 focus:outline-none transition" aria-label="Open Mobile Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl px-4 py-4 space-y-3">
+      <a href="#home" class="block text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 py-1">Home</a>
+      <a href="#about" class="block text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 py-1">About & Education</a>
+      <a href="#projects" class="block text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 py-1">Projects</a>
+      <a href="#skills" class="block text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 py-1">Technical Skills</a>
+      <a href="#contact" class="block text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 py-1">Contact</a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
+        <button type="button" class="resume-open-trigger w-full py-2 text-center rounded-lg text-xs font-semibold bg-blue-600 text-white">
+          View & Download Resume
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-20">
+
+    <!-- ======================================================================
+         SECTION 1: HOME / HERO SECTION
+         ====================================================================== -->
+    <section id="home" class="min-h-[88vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div class="max-w-5xl mx-auto w-full">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+          
+          <!-- Left Content -->
+          <div class="flex-1 text-center lg:text-left">
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-6">
+              <span class="pulse-dot"></span>
+              <span id="hero-status">Available for Summer 2025/2026 Internships</span>
+            </div>
+
+            <!-- Greeting & Name -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+              Hi, I'm <span id="hero-name" class="bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 bg-clip-text text-transparent">Alex Rivera</span>
+            </h1>
+
+            <!-- Dynamic Role Typewriter -->
+            <div class="h-8 sm:h-9 flex items-center justify-center lg:justify-start font-mono text-base sm:text-lg lg:text-xl font-semibold text-slate-700 dark:text-slate-300 mb-4">
+              <span class="text-blue-600 dark:text-blue-400 mr-2">&gt;</span>
+              <span id="typewriter-text" class="text-blue-600 dark:text-blue-400 font-bold"></span>
+              <span class="typing-cursor"></span>
+            </div>
+
+            <!-- Recruiter Pitch / Bio -->
+            <p id="hero-bio" class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
+              Passionate 1st-year Computer Science undergraduate with a deep fascination for algorithms, scalable web applications, and systems design. Actively solving problems in Data Structures & Algorithms, exploring modern full-stack development, and looking for a summer engineering internship to create real-world impact.
+            </p>
+
+            <!-- Call-To-Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
+              <a href="#projects" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-lg shadow-blue-500/25 transition flex items-center gap-2">
+                <span>Explore Projects</span>
+                <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+              </a>
+
+              <button type="button" class="resume-open-trigger px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-sm font-semibold border border-slate-300 dark:border-slate-700 transition flex items-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-blue-500"></i>
+                <span>View Resume</span>
+              </button>
+
+              <a href="#contact" class="px-5 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 text-sm font-semibold transition flex items-center gap-1.5">
+                <span>Contact Me</span>
+                <i data-lucide="mail" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+            <!-- Social and Coding Handles -->
+            <div class="flex items-center justify-center lg:justify-start gap-3">
+              <span class="text-xs uppercase font-mono tracking-wider text-slate-400 dark:text-slate-500 mr-1">Profiles:</span>
+              <a id="hero-github" href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition" title="GitHub">
+                <i data-lucide="github" class="w-4 h-4"></i>
+              </a>
+              <a id="hero-linkedin" href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition" title="LinkedIn">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+              </a>
+              <a id="hero-leetcode" href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition" title="LeetCode Profile">
+                <i data-lucide="code-2" class="w-4 h-4"></i>
+              </a>
+              <a id="hero-codechef" href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition" title="CodeChef Profile">
+                <i data-lucide="terminal" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Interactive Code Terminal / Quick Stats -->
+          <div class="w-full lg:w-96 shrink-0 space-y-4">
+            <!-- Terminal Widget -->
+            <div class="code-window shadow-2xl">
+              <div class="code-window-header">
+                <div class="flex items-center gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                </div>
+                <span class="text-xs font-mono text-slate-400 ml-4">student.profile.json</span>
+              </div>
+              <div class="p-4 font-mono text-xs text-slate-300 space-y-1 bg-slate-950/90 leading-relaxed">
+                <div><span class="text-purple-400">const</span> <span class="text-blue-400">candidate</span> = {</div>
+                <div class="pl-4"><span class="text-slate-400">year:</span> <span class="text-emerald-400">"1st Year Undergrad"</span>,</div>
+                <div class="pl-4"><span class="text-slate-400">degree:</span> <span class="text-emerald-400">"B.Tech CSE"</span>,</div>
+                <div class="pl-4"><span class="text-slate-400">target:</span> <span class="text-emerald-400">"Software Intern"</span>,</div>
+                <div class="pl-4"><span class="text-slate-400">cgpa:</span> <span class="text-amber-400">9.20</span>,</div>
+                <div class="pl-4"><span class="text-slate-400">coreStack:</span> [<span class="text-emerald-400">"C++"</span>, <span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"JS"</span>],</div>
+                <div class="pl-4"><span class="text-slate-400">lovesLearning:</span> <span class="text-cyan-400">true</span></div>
+                <div>};</div>
+                <div class="pt-2 text-slate-500 text-[11px]">// Ready to interview and contribute!</div>
+              </div>
+            </div>
+
+            <!-- Quick Stats Grid -->
+            <div id="hero-stats-container" class="grid grid-cols-2 gap-3">
+              <!-- Dynamically populated by app.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: ABOUT SECTION & EDUCATIONAL HIGHLIGHTS
+         ====================================================================== -->
+    <section id="about" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/30 border-y border-slate-200/50 dark:border-slate-800/50">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+            <span>Background & Milestones</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            About Me & Education
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+            A comprehensive overview of my academic foundation, university coursework, hackathon achievements, and personal passions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Left Column: Education Timeline (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-2 mb-2">
+              <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-500"></i>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Academic Journey</h3>
+            </div>
+            
+            <!-- Education timeline container -->
+            <div id="education-timeline" class="space-y-4">
+              <!-- Dynamically populated by app.js -->
+            </div>
+
+            <!-- Achievements Subsection -->
+            <div class="pt-6">
+              <div class="flex items-center gap-2 mb-4">
+                <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Key Achievements & Leadership</h3>
+              </div>
+              <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <!-- Dynamically populated by app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Certifications & Hobbies (5 cols) -->
+          <div class="lg:col-span-5 space-y-8">
+            <!-- Certifications -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="award" class="w-5 h-5 text-indigo-500"></i>
+                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Certifications</h3>
+                </div>
+                <span class="text-xs font-mono text-slate-400">Verified</span>
+              </div>
+              <div id="certifications-grid" class="space-y-3">
+                <!-- Dynamically populated by app.js -->
+              </div>
+            </div>
+
+            <!-- Hobbies & Beyond Tech -->
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <i data-lucide="compass" class="w-5 h-5 text-emerald-500"></i>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Hobbies & Interests</h3>
+              </div>
+              <div id="hobbies-grid" class="grid grid-cols-2 gap-3">
+                <!-- Dynamically populated by app.js -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: PROJECTS SHOWCASE
+         ====================================================================== -->
+    <section id="projects" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="folder-code" class="w-3.5 h-3.5"></i>
+            <span>Proof of Work</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Featured Projects
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+            Selected software projects solving real student problems, exploring core algorithms, and demonstrating scalable development practices.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center justify-center gap-2 mb-10 flex-wrap">
+          <button type="button" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white transition shadow-sm" data-filter="all">
+            All Projects
+          </button>
+          <button type="button" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="web">
+            Web Applications
+          </button>
+          <button type="button" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="algorithms">
+            Algorithms & DSA
+          </button>
+          <button type="button" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="systems">
+            Systems & Tools
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: TECHNICAL SKILLS
+         ====================================================================== -->
+    <section id="skills" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/30 border-y border-slate-200/50 dark:border-slate-800/50">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+            <span>Competencies</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Technical Skills & Tooling
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+            Solid foundations in core computer science, systems programming languages, modern web tech, and developer workflows.
+          </p>
+        </div>
+
+        <!-- Skills Grid Container -->
+        <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <!-- Recruiter Callout Banner -->
+        <div class="mt-12 glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-blue-600 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center sm:text-left">
+            <h4 class="text-base font-bold text-slate-900 dark:text-white">Continuous Learner & Quick Adapter</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              Actively mastering Trees, Graphs, Dynamic Programming, and Docker during my second semester.
+            </p>
+          </div>
+          <a href="#contact" class="shrink-0 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition flex items-center gap-2">
+            <span>Discuss Internship Opportunities</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: CONTACT SECTION
+         ====================================================================== -->
+    <section id="contact" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span>Get In Touch</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Let's Start a Conversation
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+            Whether you have an internship opening, an open-source collaboration, or advice for a 1st-year engineer, my inbox is always open.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: Direct Contact Info (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- Email Direct Card -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-slate-400 font-bold block">Direct Email</span>
+                  <span id="contact-email-text" class="text-sm font-semibold text-slate-900 dark:text-white font-mono break-all">alex.rivera.cs@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center gap-2">
+                <button type="button" class="copy-email-btn flex-1 py-2 px-3 rounded-lg bg-blue-600/10 hover:bg-blue-600/20 text-blue-600 dark:text-blue-400 text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-blue-500/30">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy Address</span>
+                </button>
+                <a href="mailto:alex.rivera.cs@gmail.com" class="py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm shadow-blue-500/20">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>Send Mail</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Location & Availability Card -->
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-slate-400 font-bold block">Location</span>
+                  <span id="contact-location-text" class="text-sm font-semibold text-slate-900 dark:text-white">Bengaluru, India</span>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-200/50 dark:border-slate-800/50 space-y-1 text-xs" id="contact-quick-notes">
+                <!-- Dynamically populated by app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Message Form (7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="glass-card p-6 sm:p-8 rounded-2xl">
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Send a Message</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                Fill out this quick form, and it will direct your transmission straight to my primary inbox.
+              </p>
+
+              <form id="contact-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      Your Name <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="text" id="contact-name" name="name" required placeholder="Recruiter / Engineer Name" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition" />
+                  </div>
+
+                  <div>
+                    <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      Your Email <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="email" id="contact-email" name="email" required placeholder="recruiter@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="contact-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Subject / Topic
+                  </label>
+                  <input type="text" id="contact-subject" name="subject" placeholder="Summer 2025/2026 Internship Opportunity / Project Chat" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition" />
+                </div>
+
+                <div>
+                  <label for="contact-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Message <span class="text-rose-500">*</span>
+                  </label>
+                  <textarea id="contact-message" name="message" rows="4" required placeholder="Hi Alex, we came across your portfolio and would like to invite you for an interview..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition resize-y"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/25 transition flex items-center justify-center gap-2">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Transmit Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="border-t border-slate-200 dark:border-slate-800/80 py-10 px-4 sm:px-6 lg:px-8 bg-slate-100/50 dark:bg-slate-950/60">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-900 dark:text-white">Alex Rivera</span>
+        <span>•</span>
+        <span>First-Year B.Tech CSE Portfolio</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Deployable to <strong class="text-blue-500">Vercel</strong></span>
+        <span>•</span>
+        <a href="#home" class="hover:text-blue-500 transition">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL 1: PROJECT CASE STUDY & DETAIL MODAL
+       ======================================================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+    <div id="project-modal-backdrop" class="modal-overlay fixed inset-0"></div>
+    <div class="modal-content relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-2xl">
+      
+      <!-- Close button -->
+      <button type="button" id="project-modal-close" class="absolute top-4 right-4 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-rose-500 transition" aria-label="Close Project Modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Banner image -->
+      <div class="rounded-xl overflow-hidden mb-6 aspect-video bg-slate-950 border border-slate-700/50">
+        <img id="modal-project-img" src="" alt="" class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Header -->
+      <div class="mb-4">
+        <span id="modal-project-metrics" class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block mb-1"></span>
+        <h3 id="modal-project-title" class="text-2xl font-extrabold text-slate-900 dark:text-white mb-1"></h3>
+        <p id="modal-project-subtitle" class="text-xs text-slate-500 dark:text-slate-400"></p>
+      </div>
+
+      <!-- Problem & Solution -->
+      <div class="space-y-4 mb-6">
+        <div class="p-3.5 rounded-xl bg-rose-500/5 border border-rose-500/15">
+          <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider block mb-1">The Problem</span>
+          <p id="modal-project-problem" class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
+          <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">The Technical Solution</span>
+          <p id="modal-project-solution" class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Key Features List -->
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Key Implementation Features</span>
+        <ul id="modal-project-features" class="space-y-2"></ul>
+      </div>
+
+      <!-- Learnings -->
+      <div class="p-3.5 rounded-xl bg-blue-500/5 border border-blue-500/15 mb-6">
+        <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block mb-1">Key Engineering Takeaways</span>
+        <p id="modal-project-learnings" class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+      </div>
+
+      <!-- Tech Stack Badges -->
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Technologies Used</span>
+        <div id="modal-project-stack" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <a id="modal-project-code" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:text-blue-500 transition flex items-center gap-1.5">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>Source Code</span>
+        </a>
+        <a id="modal-project-live" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm shadow-blue-500/30">
+          <i data-lucide="external-link" class="w-4 h-4"></i>
+          <span>Live Demo</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: RECRUITER RESUME PREVIEW MODAL (PRINT & EXPORT READY)
+       ======================================================================== -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+    <div id="resume-modal-backdrop" class="modal-overlay fixed inset-0"></div>
+    <div class="modal-content relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto glass-card rounded-2xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-2xl">
+      
+      <!-- Modal Toolbar -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-6">
+        <div class="flex items-center gap-2">
+          <i data-lucide="file-check" class="w-5 h-5 text-blue-500"></i>
+          <span class="text-sm font-bold text-slate-900 dark:text-white">Formatted Resume Preview</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" id="resume-print-btn" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center gap-1.5 transition">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print / Save PDF</span>
+          </button>
+          <button type="button" id="resume-modal-close" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-rose-500 transition" aria-label="Close Resume Modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Resume Paper Representation -->
+      <div class="space-y-6 text-slate-800 dark:text-slate-200">
+        <!-- Header -->
+        <div class="text-center pb-4 border-b border-slate-200 dark:border-slate-800">
+          <h2 id="resume-name" class="text-2xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tight"></h2>
+          <p id="resume-tagline" class="text-xs text-blue-600 dark:text-blue-400 font-medium mt-0.5"></p>
+          <div class="flex items-center justify-center gap-4 text-[11px] text-slate-500 dark:text-slate-400 mt-2 font-mono">
+            <span id="resume-email"></span>
+            <span>•</span>
+            <span id="resume-location"></span>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">Executive Summary</h4>
+          <p id="resume-bio" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-3">Education</h4>
+          <div id="resume-education-list"></div>
+        </div>
+
+        <!-- Skills Summary -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">Technical Competencies</h4>
+          <div id="resume-skills-list" class="space-y-1"></div>
+        </div>
+
+        <!-- Selected Projects -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-3">Highlighted Engineering Projects</h4>
+          <div id="resume-projects-list"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
